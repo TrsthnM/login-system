@@ -17,14 +17,36 @@
                 <span class="block w-6 h-0.5 bg-gray-800 mb-1"></span>
                 <span class="block w-6 h-0.5 bg-gray-800"></span>
             </label>
-            <ul class="flex flex-col items-center justify-center absolute top-full left-0 w-full h-screen bg-linear-to-b from-white to-blue-200 space-y-5 max-h-0 overflow-hidden peer-checked:max-h-150">
-                <li><a href="/" class="font-semibold text-gray-800 text-xl">Dashboard</a></li>
-                <li><a href="/" class="font-semibold text-gray-800 text-xl">Log in</a></li>
+            <ul class="flex flex-col items-center justify-center absolute top-full left-0 w-full h-screen bg-linear-to-b from-white to-blue-200 space-y-5 max-h-0 overflow-hidden peer-checked:max-h-150 z-1000">
+                @if ( request()->is('login') )
+                    <li><a href="/" class="font-semibold text-gray-800 text-xl">Dashboard</a></li>
+                @else
+                    @auth
+                        <form action="{{ route('logout') }}" method="post">
+                            @csrf
+                            <button type="submit" class="font-semibold text-gray-800 text-xl cursor-pointer">Log out</button>
+                        </form>
+                    @else
+                        <li><a href="/" class="font-semibold text-gray-800 text-xl">Dashboard</a></li>
+                        <li><a href="/login" class="font-semibold text-gray-800 text-xl">Log in</a></li>
+                    @endauth
+                @endif
             </ul>
         </div>
         <div class="hidden lg:flex space-x-10">
-            <a href="/" class="font-semibold text-gray-800 text-md lg:text-xl tracking-wide">Dashboard</a>
-            <a href="/" class="font-semibold text-gray-800 text-md lg:text-xl tracking-wide">Log in</a>
+            @if ( request()->is('login') )
+                <a href="/" class="font-semibold text-gray-800 text-md lg:text-xl tracking-wide">Dashboard</a>
+            @else
+                @auth
+                    <form action="{{ route('logout') }}" method="post">
+                        @csrf
+                        <button type="submit" class="font-semibold text-gray-800 text-xl cursor-pointer">Log out</button>
+                    </form>
+                @else
+                    <a href="/" class="font-semibold text-gray-800 text-xl">Dashboard</a>
+                    <a href="/login" class="font-semibold text-gray-800 text-xl">Log in</a>
+                @endauth
+            @endif
         </div>
     </nav>
     <main class="px-4 md:px-30 xl:px-90">
