@@ -8,16 +8,17 @@
     <title>Login & Register</title>
 </head>
 <body class="bg-linear-to-br from-white to-blue-200 h-screen">
-    <nav class="bg-white flex justify-between items-center py-4 px-90 border-b border-b-gray-300">
+    <nav class="flex justify-between items-center py-4 px-90">
         <h1 class="font-extrabold text-gray-800 text-3xl cursor-default">Trishan</h1>
         <div>
             <ul class="flex space-x-10">
-                <li><a href="/" class="font-semibold text-gray-800 text-xl">Dashboard</a></li>
-                <li><a href="/" class="font-semibold text-gray-800 text-xl">Log in</a></li>
-                <li><a href="/" class="font-semibold text-gray-800 text-xl">Register</a></li>
+                <li><a href="/" class="font-semibold text-gray-800 text-xl tracking-wide">Dashboard</a></li>
+                <li><a href="/" class="font-semibold text-gray-800 text-xl tracking-wide">Log in</a></li>
             </ul>
         </div>
     </nav>
-    {{ $slot }}
+    <main class="px-90">
+        {{ $slot }}
+    </main>
 </body>
 </html>
