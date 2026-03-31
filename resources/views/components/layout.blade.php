@@ -7,7 +7,7 @@
     @vite(['resources/css/app.css'])
     <title>Login & Register</title>
 </head>
-<body class="bg-linear-to-b from-white to-blue-200 lg:bg-linear-to-br lg:from-white lg:to-blue-200 h-screen">
+<body class="bg-linear-to-b from-white to-blue-200 lg:bg-linear-to-br lg:from-white lg:to-blue-200 min-h-screen">
     <nav class="flex justify-between items-center bg-white lg:bg-transparent py-4 px-4 md:px-30 xl:px-90 relative">
         <h1 class="font-extrabold text-gray-800 text-2xl lg:text-3xl cursor-default">Tristhan</h1>
         <div class="lg:hidden">

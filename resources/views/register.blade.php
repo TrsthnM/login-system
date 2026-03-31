@@ -1,6 +1,6 @@
 <x-layout>
-    <div class="flex justify-center mt-10 lg:mt-35">
-        <div class="backdrop-blur-xs bg-white/20 border border-gray-300 rounded-2xl p-8 w-107">
+    <div class="flex justify-center mt-2 md:mt-10 xl:mt-35">
+        <div class="backdrop-blur-xs bg-white/20 border border-gray-300 rounded-2xl p-8 w-107 mb-10">
             <h1 class="text-gray-800 font-bold text-4xl text-center mb-10">Register</h1>
             <form action="{{ route('register.store') }}" method="post">
                 @csrf

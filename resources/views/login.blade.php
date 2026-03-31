@@ -16,7 +16,7 @@
                     <p class="text-red-500 text-sm">{{ $message }}</p>
                 @enderror
 
-                <div class="flex items-center h-screen-0 mb-5 space-x-2 mt-5">
+                <div class="flex mb-5 space-x-2 mt-5">
                     <input type="checkbox" name="remember"{{ old('remember') == 'on' ? 'checked' : '' }}>
                     <label class="text-sm items-center">Remember me</label>
                 </div>
