@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,14 +16,28 @@ class AuthController extends Controller
             'password' => ['required'],
         ]);
 
-        if (Auth::attempt($credentials)) {
+        if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
             return redirect()->intended('dashboard');
         }
 
-        return back()->withErrors([
+        return back()->withInput()->withErrors([
             'email' => 'The provided credentials do not match our records.',
-        ])->onlyInput('email');
+        ]);
+    }
+
+    public function registerForm(Request $request){
+        $credentials = $request->validate([
+            'name' => ['required', 'string'],
+            'email' => ['required', 'email'],
+            'password' => ['required', 'confirmed'],
+        ]);
+
+        $credentials['password'] = bcrypt($credentials['password']);
+        $user = User::create($credentials);
+        Auth::login($user);
+
+        return redirect()->route('dashboard');
     }
 }

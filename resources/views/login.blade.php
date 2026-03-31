@@ -4,15 +4,15 @@
             <h1 class="text-gray-800 font-bold text-4xl text-center mb-10">Login</h1>
             <form action="{{ route('login.attempt') }}" method="post">
                 @csrf
-                <label for="email" class="block text-gray-800 font-bold">Email Address</label>
+                <label for="email" class="block text-gray-800 font-bold" value="{{ old('email') }}" >Email Address</label>
                 <input type="email" name="email" class="border-b border-b-gray-800 py-1 px-2 w-70 mb-5">
 
                 <label for="password" class="block text-gray-800 font-bold">Password</label>
                 <input type="password" name="password" class="border-b border-b-gray-800 py-1 px-2 w-70 mb-5">
 
                 <div class="flex items-center h-screen-0 mb-5 space-x-2">
-                    <input type="checkbox" >
-                    <label for="remember" class="text-sm items-center">Remember Me</label>
+                    <input type="checkbox" name="remember"{{ old('remember') == 'on' ? 'checked' : '' }}>
+                    <label class="text-sm items-center">Remember me</label>
                 </div>
 
                 <div>
