@@ -31,7 +31,7 @@ class AuthController extends Controller
         $credentials = $request->validate([
             'name' => ['required', 'string'],
             'email' => ['required', 'email'],
-            'password' => ['required', 'confirmed'],
+            'password' => ['required', 'min:8', 'confirmed'],
         ]);
 
         $credentials['password'] = bcrypt($credentials['password']);
