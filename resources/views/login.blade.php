@@ -1,5 +1,5 @@
 <x-layout>
-    <div class="flex justify-center mt-20 lg:mt-45">
+    <div class="flex justify-center mt-20 lg:mt-15 2xl:mt-45">
         <div class="backdrop-blur-xs bg-white/20 border border-gray-300 rounded-2xl p-8 w-87">
             <h1 class="text-gray-800 font-bold text-4xl text-center mb-10">Login</h1>
             <form action="{{ route('login.attempt') }}" method="post">
