@@ -21,8 +21,9 @@
                     <label class="text-sm items-center">Remember me</label>
                 </div>
 
-                <div>
-                    <button type="submit" class="bg-gray-800 font-bold text-white w-full py-3 rounded-2xl cursor-pointer">Login</button>
+                <div class="text-center">
+                    <button type="submit" class="bg-gray-800 font-bold text-white w-full py-3 rounded-2xl mb-3 cursor-pointer">Login</button>
+                    <a href="{{ route('forgotPassword') }}" class="text-blue-600 underline">Forgot password</a>
                 </div>
             </form>
         </div>

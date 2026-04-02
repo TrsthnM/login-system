@@ -6,6 +6,12 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
+
+use function Symfony\Component\Clock\now;
 
 class AuthController extends Controller
 {
@@ -39,5 +45,53 @@ class AuthController extends Controller
         Auth::login($user);
 
         return redirect()->route('dashboard');
+    }
+
+    public function forgotPasswordForm(Request $request){
+        $request->validate([
+            'email' => ['required', 'email', 'exists:users'],
+        ]);
+
+        $token = Str::random(65);
+
+        DB::table('password_forgot')->insert([
+            'email' => $request->email,
+            'token' => $token,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        Mail::send('forgotPasswordVerify', ['token' => $token], function($message) use ($request){
+            $message -> to($request->email);
+            $message -> subject('Forgot Password');
+        });
+
+        return redirect()->route('login');
+    }
+
+    public function forgotPasswordLinkForm($token){
+        return view('forgotPasswordLink', compact('token'));
+    }
+
+    public function resetPasswordForm(Request $request){
+        $request -> validate([
+            'token' => ['required'],
+            'email' => ['required', 'email', 'exists:users'],
+            'password' => ['required', 'confirmed'],
+        ]);
+
+        $first = DB::table('password_forgot')->where('email', $request->email)->where('token', $request->token)->first();
+
+        if(is_null($first)){
+            return back();
+        }
+
+        $user = User::where('email', $request->email)->first();
+        $user->password = Hash::make($request->password);
+        $user->save();
+
+        $first = DB::table('password_forgot')->where('email', $request->email)->where('token', $request->token)->delete();
+
+        return redirect()->route('login');
     }
 }
