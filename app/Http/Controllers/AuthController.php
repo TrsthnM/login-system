@@ -25,7 +25,7 @@ class AuthController extends Controller
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
-            return redirect()->intended('dashboard');
+            return redirect()->intended('dashboard')->with('success', 'Successfully Logged in!');
         }
 
         return back()->withInput()->withErrors([
@@ -44,7 +44,7 @@ class AuthController extends Controller
         $user = User::create($credentials);
         Auth::login($user);
 
-        return redirect()->route('dashboard');
+        return redirect()->route('dashboard')->with('success', 'Registration successful, You are logged in!');
     }
 
     public function forgotPasswordForm(Request $request){
@@ -66,7 +66,7 @@ class AuthController extends Controller
             $message -> subject('Forgot Password');
         });
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'An email has been sent!');
     }
 
     public function forgotPasswordLinkForm($token){
@@ -92,6 +92,6 @@ class AuthController extends Controller
 
         $first = DB::table('password_forgot')->where('email', $request->email)->where('token', $request->token)->delete();
 
-        return redirect()->route('login');
+        return redirect()->route('login')->with('success', 'Password has been changed successfully!');
     }
 }

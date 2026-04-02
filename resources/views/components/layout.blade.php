@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    @vite(['resources/css/app.css'])
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css">
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
     <title>Login & Register</title>
 </head>
 <body class="bg-linear-to-b from-white to-blue-200 lg:bg-linear-to-br lg:from-white lg:to-blue-200 min-h-screen">
     <nav class="flex justify-between items-center bg-white lg:bg-transparent py-4 px-4 md:px-30 xl:px-90 relative">
         <h1 class="font-extrabold text-gray-800 text-2xl lg:text-3xl cursor-default">Tristhan</h1>
+        @if ( session('success') )
+            <div id="msg-success" class="bg-green-200 border border-green-300 text-green-700 text-sm xl:text-lg rounded-2xl py-3 px-5"> {{ session('success') }} </div>
+        @endif
         <div class="lg:hidden">
             <input type="checkbox" id="menu" class="hidden peer"/>
             <label for="menu" class="cursor-pointer block p-2 font-bold">

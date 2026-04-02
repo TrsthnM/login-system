@@ -13,13 +13,19 @@
                 @enderror
 
                 <label for="password" class="block text-gray-800 font-bold mt-5">Password</label>
-                <input type="password" name="password" class="border-b border-b-gray-800 py-1 px-2 w-full mb-2">
+                <div class="flex items-center border-b border-b-gray-800">
+                    <input type="password" name="password" id="password" class="py-1 px-2 w-full">
+                    <i class="fa-regular fa-eye cursor-pointer" id="eyeicon"></i>
+                </div>
                 @error('password')
                     <p class="text-red-500 text-sm">{{ $message }}</p>
                 @enderror
 
                 <label for="password_confirmation" class="block text-gray-800 font-bold mt-5">Confirm Password</label>
-                <input type="password" name="password_confirmation" class="border-b border-b-gray-800 py-1 px-2 w-full mb-2">
+                <div class="flex items-center border-b border-b-gray-800">
+                    <input type="password" name="password_confirmation" id="passwordd" class="py-1 px-2 w-full">
+                    <i class="fa-regular fa-eye cursor-pointer" id="eyeiconn"></i>
+                </div>
 
                 <div class="mt-10">
                     <button type="submit" class="bg-gray-800 font-bold text-white w-full py-3 rounded-2xl cursor-pointer">Reset</button>
