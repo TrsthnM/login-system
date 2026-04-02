@@ -52,8 +52,9 @@ Tristhan Dave Malab
 
 ## 📷 Preview
 
-![Login Page](Example%20Images/Welcome.png)
+
 ![Login Page](Example%20Images/Register.png)
 ![Login Page](Example%20Images/Login.png)
+![Login Page](Example%20Images/ForgotPassword.png)
 ![Login Page](Example%20Images/ResetPassword.png)
-![Login Page](Example%20Images/Logout.png)
+![Login Page](Example%20Images/Success.png)
