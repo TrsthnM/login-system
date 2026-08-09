@@ -25,7 +25,7 @@ Secure logout functionality
 
 <br>
 
-## 🛠️ Technologies Used
+## Technologies Used
 - Laravel
 - PHP
 - Blade
