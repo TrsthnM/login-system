@@ -1,26 +1,26 @@
-## 🔐 Login & Register System
+## Login & Register System
 
 This is a complete Login and Register system built using Laravel.
 It handles user authentication with essential features for real-world applications.
 
 <br>
 
-## 🚀 Features
+## Features
 
-🔑 Login
+Login
 Users can log in using email and password
 - Remember Me - keeps the user logged in
 - Forgot Password - reset password via email
 
 <br>
 
-## 📝 Register
+## Register
 Users can create a new account
 Input validation for security
 
 <br>
 
-## 🚪 Logout
+## Logout
 Secure logout functionality
 
 <br>
@@ -33,24 +33,24 @@ Secure logout functionality
 
 <br>
 
-## 💡 Purpose
+## Purpose
 This project helped me improve Authentication system development
 - Laravel backend skills
 - Basic web security
 
 <br>
 
-### 👨‍💻 Author
+### Author
 Tristhan Dave Malab
 
 <br>
 
-## 📌 Status
-### ✅ Completed
+## Status
+### Completed
 
 <br>
 
-## 📷 Preview
+## Preview
 
 
 ![Login Page](Example%20Images/Register.png)
